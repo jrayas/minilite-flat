@@ -526,9 +526,14 @@ input[type="search"]:focus {
 }
 
 /* Status bar and buttons */
+/* Solid container, no border: floating status text never overlaps note text */
 .status-bar {
-  background: transparent;
+  --status-bar-background: var(--ans-bg);
+  --status-bar-border-width: 0;
+  background: var(--ans-bg);
   border: 0;
+  border-radius: var(--ans-radius-m);
+  padding: 4px 10px;
 }
 button.mod-cta {
   border-radius: var(--ans-radius-full);
@@ -761,4 +766,10 @@ body.mod-windows .titlebar-inner {
 body.mod-windows .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-container {
   position: relative;
   z-index: 3;
+}
+/* Window buttons (minimise, maximise, close) sit in the top-right corner: start both panels
+   below that row so the buttons never cover a panel corner or its outline */
+body.mod-windows .workspace-split.mod-left-split .workspace-tab-container,
+body.mod-windows .workspace-split.mod-right-split .workspace-tab-container {
+  margin-top: 0;
 }
