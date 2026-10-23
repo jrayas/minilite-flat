@@ -374,7 +374,7 @@ body.theme-light.ans-yellow-blue { --link-color: #007aff; --link-external-color:
 /* ==========================================================================
    5. Sidebar and file explorer (Notes style)
    ========================================================================== */
-/* Inset, rounded sidebar panel (leaves sit inside .workspace-tab-container) */
+/* Flat, edge-to-edge sidebars: no inset container, border or rounded corners */
 .workspace-split.mod-left-split,
 .workspace-split.mod-right-split {
   background: var(--ans-bg);
@@ -385,7 +385,7 @@ body.theme-light.ans-yellow-blue { --link-color: #007aff; --link-external-color:
 }
 .workspace-split.mod-left-split .workspace-tab-container,
 .workspace-split.mod-right-split .workspace-tab-container {
-  padding: var(--ans-gap);
+  padding: 0;
   box-sizing: border-box;
 }
 .workspace-split.mod-left-split .workspace-leaf,
@@ -394,10 +394,9 @@ body.theme-light.ans-yellow-blue { --link-color: #007aff; --link-external-color:
 }
 .workspace-split.mod-left-split .workspace-leaf-content,
 .workspace-split.mod-right-split .workspace-leaf-content {
-  background: var(--ans-sidebar);
-  border: 1px solid var(--ans-divider);
-  border-radius: var(--ans-radius-l);
-  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
 }
 .workspace-split.mod-left-split .workspace-tabs,
 .workspace-split.mod-right-split .workspace-tabs {
@@ -408,7 +407,7 @@ body.theme-light.ans-yellow-blue { --link-color: #007aff; --link-external-color:
 .workspace-split.mod-right-split .workspace-tab-header-container {
   background: transparent;
   border: 0;
-  padding: 4px var(--ans-gap) 0;
+  padding: 4px 8px 0;
 }
 .workspace-split.mod-left-split .workspace-tab-header.is-active,
 .workspace-split.mod-right-split .workspace-tab-header.is-active {
@@ -615,7 +614,7 @@ body .workspace-ribbon.mod-left.is-collapsed {
 .workspace-split.mod-left-split .workspace-tab-header-container,
 .workspace-split.mod-right-split .workspace-tab-header-container {
   /* line the first icon up with the text inside the panel below */
-  padding: 0 calc(var(--ans-gap) + 8px);
+  padding: 0 16px;
 }
 .workspace-split.mod-left-split .workspace-tab-header-container-inner,
 .workspace-split.mod-right-split .workspace-tab-header-container-inner {
@@ -626,28 +625,21 @@ body .workspace-ribbon.mod-left.is-collapsed {
 /* Right panel ends above the status bar so "0 backlinks" no longer collides with its edge */
 .workspace-split.mod-right-split .workspace-tab-container {
   /* status bar height plus the left vault-profile row, so both panels end level */
-  padding-bottom: calc(var(--ans-gap) + 41px);
+  padding-bottom: 41px;
 }
 
-/* Transparent panels in both modes, outlined by a hairline only (nothing looks raised) */
+/* No container in either mode; a single hairline divider separates each sidebar from the editor */
 .workspace-split.mod-left-split .workspace-leaf-content,
 .workspace-split.mod-right-split .workspace-leaf-content {
   background: transparent;
+  border: 0;
   box-shadow: none;
 }
-.theme-light .workspace-split.mod-left-split .workspace-leaf-content,
-.theme-light .workspace-split.mod-right-split .workspace-leaf-content {
-  border-color: rgba(0, 0, 0, 0.1);
+.workspace-split.mod-left-split {
+  border-right: 1px solid var(--ans-divider);
 }
-.theme-dark .workspace-split.mod-left-split .workspace-leaf-content,
-.theme-dark .workspace-split.mod-right-split .workspace-leaf-content {
-  border-color: rgba(255, 255, 255, 0.12);
-}
-
-/* Comfortable spacing: header row clears the window controls, panels get an even gap */
-.workspace-split.mod-left-split .workspace-tab-container,
-.workspace-split.mod-right-split .workspace-tab-container {
-  padding-top: 8px;   /* panels sit a touch lower, away from the icon row */
+.workspace-split.mod-right-split {
+  border-left: 1px solid var(--ans-divider);
 }
 
 /* Bottom row: vault profile (left) down a little, status bar (right) up a little, so they share one baseline */
