@@ -638,6 +638,10 @@ body .workspace-ribbon.mod-left.is-collapsed {
 .workspace-split.mod-left-split {
   border-right: 1px solid var(--ans-divider);
 }
+/* Ribbon divider: same hairline as the right panel. Obsidian 1.14 marks the left ribbon .mod-primary (not .mod-left); it already starts below the 40px top row, so the line clears the macOS window controls */
+body .workspace-ribbon.mod-primary {
+  border-right: 1px solid var(--ans-divider);
+}
 .workspace-split.mod-right-split {
   border-left: 1px solid var(--ans-divider);
 }
